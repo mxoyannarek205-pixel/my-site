@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Narek - Who am I?</title>
-    <!-- Font Awesome для красивых иконок -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         /* ===== FONT FACE ===== */
@@ -217,25 +215,24 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
             text-decoration: none;
             background: rgba(255, 255, 255, 0.1);
             border: 1.5px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            color: #ffffff;
-            font-weight: 700;
+            overflow: hidden;
+        }
+
+        .social-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
         }
 
         .social-link:hover {
-            background: rgba(255, 255, 255, 0.15);
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             border-color: rgba(255, 255, 255, 0.4);
-        }
-
-        /* Font Awesome icon styling */
-        .social-link i {
-            font-size: 26px;
         }
 
         /* ===== CLOSING TEXT ===== */
@@ -352,11 +349,6 @@
             .social-link {
                 width: 48px;
                 height: 48px;
-                font-size: 20px;
-            }
-
-            .social-link i {
-                font-size: 22px;
             }
         }
 
@@ -406,11 +398,6 @@
             .social-link {
                 width: 42px;
                 height: 42px;
-                font-size: 18px;
-            }
-
-            .social-link i {
-                font-size: 18px;
             }
 
             .bangaranga {
@@ -493,16 +480,16 @@
                     <div class="section-title" id="socials">My Social Media</div>
                     <div class="social-media">
                         <a href="https://t.me/ARIZONAB1" target="_blank" class="social-link" title="Telegram">
-                            <i class="fab fa-telegram"></i>
+                            <img src="social-telegram.png" alt="Telegram">
                         </a>
                         <a href="https://www.tiktok.com/@skype_shrimpo?is_from_webapp=1&sender_device=pc" target="_blank" class="social-link" title="TikTok">
-                            <i class="fab fa-tiktok"></i>
+                            <img src="social-tiktok.png" alt="TikTok">
                         </a>
                         <a href="https://discord.gg/AbyD9Wfa" target="_blank" class="social-link" title="Discord">
-                            <i class="fab fa-discord"></i>
+                            <img src="social-discord.png" alt="Discord">
                         </a>
-                        <a href="https://github.com/mkhoyannarek15-cloud" target="_blank" class="social-link" title="GitHub">
-                            <i class="fab fa-github"></i>
+                        <a href="https://github.com/mkhoyannarek15-cloud" target="_blank" class="social-link" title="Reddit">
+                            <img src="social-reddit.png" alt="Reddit">
                         </a>
                     </div>
                 </div>
