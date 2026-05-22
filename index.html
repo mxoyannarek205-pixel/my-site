@@ -1,323 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narek - Who am I?</title>
+    
+    <style>
+        /* ===== FONT FACE ===== */
+        @font-face {
+            font-family: 'Neulis Neue';
+            src: url('neulis-neue-12c8468460bb3ed2d245cf40087af1a0.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
 
-<title>Mkhoyan Narek</title>
+        @font-face {
+            font-family: 'Neulis Neue';
+            src: url('neulis-neue-12c8468460bb3ed2d245cf40087af1a0.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+        }
 
-<style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* Օնլայն հղումով կապում ենք քո Singing Sans տառատեսակը */
-@font-face {
-    font-family: 'Singing Sans';
-    src: url('https://files-baseddb-saulx-esc2026-production-en-e-e-ko51x0.based.dev/Singing_Sans-4dddf2f65a75d3ded1f8b293f387faa8.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            font-family: 'Neulis Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #ffffff;
+            background: radial-gradient(circle at center, #2b3a55 0%, #000000 100%);
+            overflow-x: hidden;
+        }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+        /* ===== BACKGROUND VIDEO ===== */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
 
-body,html{
-    width:100%;
-    height:100%;
-    overflow:hidden;
+        .video-bg video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(10px) brightness(0.5);
+        }
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+        /* ===== NAVBAR (STICKY) ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px) saturate(140%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    font-family: 'Singing Sans', Arial, sans-serif;
-    color:white;
+        .navbar-brand {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-decoration: none;
+        }
 
-    background:
-    radial-gradient(circle at center,
-    #2b3a55 0%,
-    #000 100%);
-}
+        .navbar-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
 
-.video-bg{
-    position:fixed;
-    inset:0;
-    z-index:0;
-}
+        .navbar-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            letter-spacing: 0.5px;
+        }
 
-.video-bg video{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+        .navbar-links a:hover {
+            color: #ffffff;
+        }
 
-    filter:
-    blur(10px)
-    brightness(0.6);
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            position: relative;
+            z-index: 10;
+            min-height: calc(100vh - 60px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+        }
 
-    transform:scale(1.1);
-}
+        /* ===== CONTAINER ===== */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
 
-.liquid-glass{
+        /* ===== PROFILE PHOTO ===== */
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 30px;
+            object-fit: cover;
+            margin: 0 auto 40px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            animation: slideInDown 0.8s ease-out;
+        }
 
-    position:relative;
-    z-index:2;
+        /* ===== MAIN HEADING ===== */
+        h1 {
+            font-size: clamp(3rem, 12vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            
+            background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            
+            animation: slideInUp 0.8s ease-out 0.2s both;
+        }
 
-    width:90%;
-    max-width:480px;
+        /* ===== GLASS CARD ===== */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            padding: 50px 40px;
+            margin: 30px 0;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: slideInUp 0.8s ease-out 0.4s both;
+        }
 
-    padding:55px 35px;
+        /* ===== CONTENT SECTIONS ===== */
+        .bio-section {
+            margin-bottom: 30px;
+            text-align: left;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
 
-    text-align:center;
+        .bio-section:last-child {
+            margin-bottom: 0;
+        }
 
-    background:
-    rgba(255,255,255,0.08);
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
 
-    backdrop-filter:
-    blur(25px)
-    saturate(160%);
+        .section-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            letter-spacing: 0.3px;
+        }
 
-    border:
-    1px solid rgba(255,255,255,0.15);
+        .section-text p {
+            margin-bottom: 15px;
+        }
 
-    border-radius:
-    60% 40% 30% 70% /
-    60% 30% 70% 40%;
+        .section-text p:last-child {
+            margin-bottom: 0;
+        }
 
-    box-shadow:
-    0 20px 45px rgba(0,0,0,0.5);
+        /* ===== DIVIDER ===== */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            margin: 30px 0;
+        }
 
-    animation:
-    float 6s ease-in-out infinite;
-}
+        /* ===== SOCIAL MEDIA ===== */
+        .social-section {
+            margin-top: 40px;
+        }
 
-@keyframes float{
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
 
-    0%,100%{
-        transform:translateY(0);
-    }
+        .social-link {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: #ffffff;
+            font-weight: 700;
+        }
 
-    50%{
-        transform:translateY(-18px);
-    }
-}
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
 
-h1{
-    font-size:2.5rem;
-    margin-bottom:15px;
-}
+        /* ===== CLOSING TEXT ===== */
+        .closing {
+            margin-top: 30px;
+            text-align: center;
+        }
 
-.status{
-    color:#00d4ff;
-    line-height:1.5;
-    margin-bottom:25px;
-}
+        .bye-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
 
-.tags{
+        .bangaranga {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
 
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:12px;
+        /* ===== FOOTER ===== */
+        .footer {
+            position: relative;
+            z-index: 10;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-    margin-bottom:30px;
-}
+        /* ===== ANIMATIONS ===== */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.tag{
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    padding:8px 16px;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
 
-    border-radius:20px;
+        .bio-section:nth-child(1) { animation-delay: 0.5s; }
+        .bio-section:nth-child(2) { animation-delay: 0.6s; }
+        .bio-section:nth-child(3) { animation-delay: 0.7s; }
+        .bio-section:nth-child(4) { animation-delay: 0.8s; }
 
-    font-size:0.85rem;
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
 
-    background:
-    rgba(255,255,255,0.08);
+            .navbar-links {
+                gap: 20px;
+                font-size: 0.85rem;
+            }
 
-    border:
-    1px solid rgba(255,255,255,0.15);
-}
+            .main-content {
+                padding: 40px 20px;
+                min-height: auto;
+            }
 
-.music-controls{
+            .glass-card {
+                padding: 35px 25px;
+                border-radius: 18px;
+            }
 
-    display:flex;
-    justify-content:center;
-    gap:20px;
-}
+            h1 {
+                font-size: clamp(2rem, 8vw, 4rem);
+                margin-bottom: 20px;
+            }
 
-.music-btn{
+            .profile-img {
+                width: 150px;
+                height: 150px;
+                margin-bottom: 25px;
+            }
 
-    width:70px;
-    height:70px;
+            .section-text {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
 
-    border:none;
-    border-radius:50%;
+            .social-link {
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+            }
+        }
 
-    cursor:pointer;
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 12px 15px;
+            }
 
-    font-size:30px;
-    color:white;
+            .navbar-brand {
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+            .navbar-links {
+                gap: 12px;
+                font-size: 0.75rem;
+            }
 
-    background:
-    rgba(255,255,255,0.1);
+            .glass-card {
+                padding: 25px 18px;
+                margin: 20px 0;
+                border-radius: 14px;
+            }
 
-    border:
-    2px solid rgba(255,255,255,0.2);
+            h1 {
+                font-size: clamp(1.5rem, 6vw, 2.5rem);
+                margin-bottom: 15px;
+                letter-spacing: -1px;
+            }
 
-    backdrop-filter:blur(20px);
+            .profile-img {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 20px;
+                border-radius: 20px;
+            }
 
-    transition:0.3s;
-}
+            .section-text {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
 
-.music-btn:hover{
+            .section-title {
+                font-size: 1.1rem;
+            }
 
-    transform:
-    scale(1.1)
-    translateY(-5px);
+            .social-link {
+                width: 42px;
+                height: 42px;
+                font-size: 18px;
+            }
 
-    border-color:#00d4ff;
-
-    box-shadow:
-    0 0 30px rgba(0,212,255,0.5);
-}
-
-.music-btn.playing{
-
-    animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-
-    0%,100%{
-        box-shadow:
-        0 0 20px rgba(0,212,255,0.2);
-    }
-
-    50%{
-        box-shadow:
-        0 0 40px rgba(0,212,255,0.6);
-    }
-}
-
-@media(max-width:480px){
-
-    .liquid-glass{
-        padding:40px 25px;
-        border-radius:15px !important;
-    }
-
-    h1{
-        font-size:2rem;
-    }
-
-    .music-btn{
-        width:60px;
-        height:60px;
-        font-size:24px;
-    }
-}
-
-</style>
+            .bangaranga {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<div class="video-bg">
-
-    <video autoplay muted loop playsinline id="bgVideo">
-
-        <source
-        src="https://video.wixstatic.com/video/11062b_62f0356712544a87b392417662c4658d/720p/mp4/file.mp4"
-        type="video/mp4">
-
-    </video>
-
-</div>
-
-<main class="liquid-glass">
-
-    <h1>Mkhoyan Narek</h1>
-
-    <p class="status">
-        The website is still under development,<br>
-        hold on tight, everything's gonna be awesome!
-    </p>
-
-    <div class="tags">
-
-        <span class="tag">Developer</span>
-
-        <span class="tag">BANGARANGA</span>
-
+    <!-- Background Video -->
+    <div class="video-bg">
+        <video autoplay muted loop playsinline>
+            <source src="https://video.wixstatic.com/video/11062b_62f0356712544a87b392417662c4658d/720p/mp4/file.mp4" type="video/mp4">
+        </video>
     </div>
 
-    <div class="music-controls">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-brand">NAREK / BLOG</div>
+        <ul class="navbar-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#socials">Socials</a></li>
+        </ul>
+    </nav>
 
-        <button
-        class="music-btn"
-        id="musicStart">
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Profile Photo -->
+            <img src="me.jpg" alt="Narek" class="profile-img">
 
-            ▶
+            <!-- Main Heading -->
+            <h1>Who am I?</h1>
 
-        </button>
+            <!-- Glass Card with Content -->
+            <div class="glass-card">
+                <!-- Section 1: Introduction -->
+                <div class="bio-section">
+                    <div class="section-text">
+                        <p>My name is Narek. I'm 13 years old, and I'm starting my own blog. I've tried doing this before, but unfortunately it didn't work out. I'm interested in pretty much everything. For example, I love writing music, discovering forgotten media and streaming via various plugins.</p>
+                    </div>
+                </div>
 
-        <button
-        class="music-btn"
-        id="musicStop">
+                <!-- Divider -->
+                <div class="divider"></div>
 
-            ⏹
+                <!-- Section 2: Friends -->
+                <div class="bio-section">
+                    <div class="section-title">My Friends</div>
+                    <div class="section-text">
+                        <p>I won't forget my friends either! Most of my friends are digital — online acquaintances from all over the world. I don't just love them, I adore them. Since last year, I've been attending TUMO, where I've made lots more friends. It seems that almost all the coaches like me, though that's not certain!</p>
+                    </div>
+                </div>
 
-        </button>
+                <!-- Divider -->
+                <div class="divider"></div>
 
-    </div>
+                <!-- Section 3: Achievements -->
+                <div class="bio-section">
+                    <div class="section-title">My Achievements</div>
+                    <div class="section-text">
+                        <p>As soon as I joined, I started learning robotics, filmmaking and programming with great enthusiasm. I've always loved doing these things. Recently, I passed the Goethe-Zertifikat A2 exam, which was a huge achievement for me. I hope you enjoyed my bio!</p>
+                    </div>
+                </div>
 
-</main>
+                <!-- Divider -->
+                <div class="divider"></div>
 
-<audio id="myAudio" loop>
-    <source src="eurovision.mp3" type="audio/mpeg">
-</audio>
+                <!-- Section 4: Connection -->
+                <div class="bio-section">
+                    <div class="section-title">Let's Connect</div>
+                    <div class="section-text">
+                        <p>If you'd like to be friends, I'm open to it. I'm looking forward to meeting each and every one of you!</p>
+                    </div>
+                </div>
 
-<script>
+                <!-- Social Media Section -->
+                <div class="social-section">
+                    <div class="section-title" id="socials">My Social Media</div>
+                    <div class="social-media">
+                        <a href="https://t.me/ARIZONAB1" target="_blank" class="social-link" title="Telegram">✈️</a>
+                        <a href="https://www.tiktok.com/@skype_shrimpo?is_from_webapp=1&sender_device=pc" target="_blank" class="social-link" title="TikTok">🎵</a>
+                        <a href="https://discord.gg/AbyD9Wfa" target="_blank" class="social-link" title="Discord">💬</a>
+                        <a href="https://github.com/mkhoyannarek15-cloud" target="_blank" class="social-link" title="GitHub">🐙</a>
+                    </div>
+                </div>
 
-window.addEventListener('DOMContentLoaded', () => {
+                <!-- Divider -->
+                <div class="divider"></div>
 
-    const video = document.getElementById('bgVideo');
-    video.play().catch(() => {});
+                <!-- Closing -->
+                <div class="closing">
+                    <p class="bye-text">Bye!</p>
+                    <p class="bangaranga">BANGARANGA!</p>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    const audio = document.getElementById('myAudio');
-    const startBtn = document.getElementById('musicStart');
-    const stopBtn = document.getElementById('musicStop');
+    <!-- Footer -->
+    <footer class="footer">
+        © 2026 · All Rights Reserved
+    </footer>
 
-    // START MUSIC
-    function startMusic(){
-        audio.play().catch(() => {});
-        startBtn.classList.add('playing');
-    }
-
-    // STOP MUSIC
-    function stopMusic(){
-        audio.pause();
-        startBtn.classList.remove('playing');
-    }
-
-    startBtn.addEventListener('click', startMusic);
-    stopBtn.addEventListener('click', stopMusic);
-
-    // ՀՆԱՐՔ: Հենց օգտատերը առաջին անգամ սեղմի էկրանի ցանկացած տեղ, երգը ավտոմատ կմիանա
-    document.addEventListener('click', () => {
-        audio.play().then(() => {
-            startBtn.classList.add('playing');
-        }).catch(error => {
-            console.log("Autoplay blocked by browser policy until user interaction.");
+    <script>
+        // Smooth scroll for navbar links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
         });
-    }, { once: true });
-
-});
-
-</script>
-
+    </script>
 </body>
 </html>
