@@ -272,34 +272,18 @@
 
         /* ===== ANIMATIONS ===== */
         @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .bio-section:nth-child(1) { animation-delay: 0.5s; }
@@ -309,112 +293,37 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .navbar {
-                padding: 15px 20px;
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .navbar-links {
-                gap: 20px;
-                font-size: 0.85rem;
-            }
-
-            .main-content {
-                padding: 40px 20px;
-                min-height: auto;
-            }
-
-            .glass-card {
-                padding: 35px 25px;
-                border-radius: 18px;
-            }
-
-            h1 {
-                font-size: clamp(2rem, 8vw, 4rem);
-                margin-bottom: 20px;
-            }
-
-            .profile-img {
-                width: 150px;
-                height: 150px;
-                margin-bottom: 25px;
-            }
-
-            .section-text {
-                font-size: 0.95rem;
-                line-height: 1.7;
-            }
-
-            .social-link {
-                width: 48px;
-                height: 48px;
-            }
+            .navbar { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            .navbar-links { gap: 20px; font-size: 0.85rem; }
+            .main-content { padding: 40px 20px; min-height: auto; }
+            .glass-card { padding: 35px 25px; border-radius: 18px; }
+            h1 { font-size: clamp(2rem, 8vw, 4rem); margin-bottom: 20px; }
+            .profile-img { width: 150px; height: 150px; margin-bottom: 25px; }
+            .section-text { font-size: 0.95rem; line-height: 1.7; }
+            .social-link { width: 48px; height: 48px; }
         }
 
         @media (max-width: 480px) {
-            .navbar {
-                padding: 12px 15px;
-            }
-
-            .navbar-brand {
-                font-size: 1rem;
-                letter-spacing: 1px;
-            }
-
-            .navbar-links {
-                gap: 12px;
-                font-size: 0.75rem;
-            }
-
-            .glass-card {
-                padding: 25px 18px;
-                margin: 20px 0;
-                border-radius: 14px;
-            }
-
-            h1 {
-                font-size: clamp(1.5rem, 6vw, 2.5rem);
-                margin-bottom: 15px;
-                letter-spacing: -1px;
-            }
-
-            .profile-img {
-                width: 120px;
-                height: 120px;
-                margin-bottom: 20px;
-                border-radius: 20px;
-            }
-
-            .section-text {
-                font-size: 0.9rem;
-                line-height: 1.6;
-            }
-
-            .section-title {
-                font-size: 1.1rem;
-            }
-
-            .social-link {
-                width: 42px;
-                height: 42px;
-            }
-
-            .bangaranga {
-                font-size: 1.4rem;
-            }
+            .navbar { padding: 12px 15px; }
+            .navbar-brand { font-size: 1rem; letter-spacing: 1px; }
+            .navbar-links { gap: 12px; font-size: 0.75rem; }
+            .glass-card { padding: 25px 18px; margin: 20px 0; border-radius: 14px; }
+            h1 { font-size: clamp(1.5rem, 6vw, 2.5rem); margin-bottom: 15px; letter-spacing: -1px; }
+            .profile-img { width: 120px; height: 120px; margin-bottom: 20px; border-radius: 20px; }
+            .section-text { font-size: 0.9rem; line-height: 1.6; }
+            .section-title { font-size: 1.1rem; }
+            .social-link { width: 42px; height: 42px; }
+            .bangaranga { font-size: 1.4rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Background Video -->
     <div class="video-bg">
         <video autoplay muted loop playsinline>
             <source src="https://video.wixstatic.com/video/11062b_62f0356712544a87b392417662c4658d/720p/mp4/file.mp4" type="video/mp4">
         </video>
     </div>
 
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-brand">NAREK / BLOG</div>
         <ul class="navbar-links">
@@ -424,28 +333,25 @@
         </ul>
     </nav>
 
-    <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            <!-- Profile Photo -->
             <img src="me.jpg" alt="Narek" class="profile-img">
 
-            <!-- Main Heading -->
             <h1>Who am I?</h1>
 
-            <!-- Glass Card with Content -->
             <div class="glass-card">
-                <!-- Section 1: Introduction -->
                 <div class="bio-section">
                     <div class="section-text">
                         <p>My name is Narek. I'm 13 years old, and I'm starting my own blog. I've tried doing this before, but unfortunately it didn't work out. I'm interested in pretty much everything. For example, I love writing music, discovering forgotten media and streaming via various plugins.</p>
+                        
+                        <div style="margin-top: 20px;">
+                            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/60SdxuYpC0fT6p_6Y_5Y_5" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Divider -->
                 <div class="divider"></div>
 
-                <!-- Section 2: Friends -->
                 <div class="bio-section">
                     <div class="section-title">My Friends</div>
                     <div class="section-text">
@@ -453,10 +359,8 @@
                     </div>
                 </div>
 
-                <!-- Divider -->
                 <div class="divider"></div>
 
-                <!-- Section 3: Achievements -->
                 <div class="bio-section">
                     <div class="section-title">My Achievements</div>
                     <div class="section-text">
@@ -464,10 +368,8 @@
                     </div>
                 </div>
 
-                <!-- Divider -->
                 <div class="divider"></div>
 
-                <!-- Section 4: Connection -->
                 <div class="bio-section">
                     <div class="section-title">Let's Connect</div>
                     <div class="section-text">
@@ -475,7 +377,6 @@
                     </div>
                 </div>
 
-                <!-- Social Media Section -->
                 <div class="social-section">
                     <div class="section-title" id="socials">My Social Media</div>
                     <div class="social-media">
@@ -494,10 +395,8 @@
                     </div>
                 </div>
 
-                <!-- Divider -->
                 <div class="divider"></div>
 
-                <!-- Closing -->
                 <div class="closing">
                     <p class="bye-text">Bye!</p>
                     <p class="bangaranga">BANGARANGA!</p>
@@ -506,7 +405,6 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         © 2026 · All Rights Reserved
     </footer>
